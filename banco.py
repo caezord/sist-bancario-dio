@@ -3,25 +3,38 @@ import time
 
 saldo = 0
 
+transacoes = []
+
 def saque():
-    global saldo
+    global saldo, transacoes
     s = float(input("digite o valor a ser sacado do seu saldo:\n>>> "))
     time.sleep(1.5)
     if(s>saldo):
         print("você não possui saldo o suficiente")
     else:
         saldo -= s
+        transacoes.append(f"Valor do deposito: R${s:.2f}")
         print(f"Seu novo saldo eh de: R${saldo:.2f}")
 
 def deposito():
-    global saldo
-    d = float(input("digite o valor a ser depositado na sua conta:\n>>> "))
+    global saldo, transacoes
+    d = float(input("Digite o valor a ser depositado na sua conta:\n>>> "))
     time.sleep(1.5)
     saldo += d
+    transacoes.append(f"Valor do deposito: R${d:.2f}")
     print(f"Seu novo saldo eh de: R${saldo:.2f}")
 
 def extrato():
-    saldo = 0
+    global saldo, transacoes
+    time.sleep(1.5)
+    print("\n--- Extrato Bancário ---")
+    print(f"---Proprietario: {nome}---")
+    if not transacoes:  
+        print("Nenhuma transação realizada ate o momento.")
+    else:
+        for transacao in transacoes:  
+            print(transacao)
+    print(f"Saldo atual: R${saldo:.2f}\n")
 
 nome = input("digite o nome do proprietario da conta:\n>>> ")
 time.sleep(1.5)
