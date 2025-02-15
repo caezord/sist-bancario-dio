@@ -13,7 +13,7 @@ def saque():
         print("você não possui saldo o suficiente")
     else:
         saldo -= s
-        transacoes.append(f"Valor do deposito: R${s:.2f}")
+        transacoes.append(f"Valor do saque: R${s:.2f}")
         print(f"Seu novo saldo eh de: R${saldo:.2f}")
 
 def deposito():
